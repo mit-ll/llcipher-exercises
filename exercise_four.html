@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,16 +56,18 @@
 <table class="exerciseLayoutTable" cellspacing="0">
   <tr>
     <td class="exerciseDetails">
-      <h1>RSA Challenge Two: RSA Small Plaintext and Encryption Exponent Attack</h1>
+      <h1>RSA Challenge Four: RSA Modulus Reuse Attack</h1>
 <div class="exerciseDescription">
-  <p><b>The Problem:</b> Given an RSA ciphertext encrypting a small message with a small public key (e.g. e = 3), recover the message.</p>
+  <p><b>The Problem:</b> Given an encryption key, a decryption key and a modulus, recover the decryption key corresponding to a different encryption key but the same modulus.</p>
 </div>
 
 <div class="problemStatement">
-  <p>Malland sent another message to Horridland; however, this time, you don't really know what they might be saying.
-  You do, however, know that the encryption exponent is e = 3, and that Mallanders tend to be very brief and to the point, so you think the message in question is probably very short.
-  Use this knowledge to figure out what the message is.
+  <p>
+  Your agent in Malland has a breakthrough and gets his hands on Malland's secret decryption exponent d. 
+  Though Malland quickly discovers that there has been a breach in security and changes their decryption exponent d and encryption exponent e (to e<sub>new</sub>), they do not think to also change their modulus. 
+  Use this information to discover their new decryption exponent d<sub>new</sub>.
   </p>
+
   <p>For this exercise, use the following values:</p>
 <table class="exerciseValuesTable" cellspacing="0">
   <tr class="headerRow">
@@ -74,16 +75,20 @@
     <td class="value">Value</td>
   </tr>
     <tr class="oddRow">
-      <td class="name">Modulus: </td>
+      <td class="name">Modulus #</td>
       <td class="value"><div id="modulus"></div></td>
     </tr>
     <tr class="evenRow">
-      <td class="name">Public exponent: </td>
-      <td class="value"><div id="exponent"></div></td>
+      <td class="name">Old public exponent</td>
+      <td class="value"><div id="old_public_exp"></div></td>
     </tr>
     <tr class="oddRow">
-      <td class="name">Ciphertext: </td>
-      <td class="value"><div id="ciphertext"></div></td>
+      <td class="name">Old private exponent</td>
+      <td class="value"><div id="old_private_exp"></div></td>
+    </tr>
+    <tr class="evenRow">
+      <td class="name">New public exponent</td>
+      <td class="value"><div id="new_public_exp"></div></td>
     </tr>
 </table>
 
@@ -118,17 +123,28 @@
 <!-- Create and check problems -->
 <script>
 function loadProblem() {
-  let msg = getVeryShortMessage();
-  let msgval = textToNumber(msg);
-  let rsa = genRSAWithPubExp(rsa_bits, 3);
+
+  let rsa = genRSAWithPubExp(rsa_bits, 13);
   let modulus = rsa[0];
-  let exponent = rsa[1];
-  let ctext = modExp(msgval, exponent, modulus);
+  let old_public_exp = rsa[1];
+  let old_private_exp = rsa[4];
+  let phin = (rsa[2]-1n) * (rsa[3]-1n)
   
   document.getElementById('modulus').innerHTML = modulus;
-  document.getElementById('exponent').innerHTML = exponent;
-  document.getElementById('ciphertext').innerHTML = ctext;
-  let answerhash = sjcl.hash.sha256.hash(msg);
+  document.getElementById('old_public_exp').innerHTML = old_public_exp;
+  document.getElementById('old_private_exp').innerHTML = old_private_exp;
+
+  let new_public_exp = getRandomBigIntLessThan(modulus);
+  let gcdres = extendedGCD(phin, new_public_exp);
+  while ((gcdres[0] != 1) || (new_public_exp == old_public_exp)) {
+    new_public_exp = getRandomBigIntLessThan(modulus);
+    gcdres = extendedGCD(phin, new_public_exp);
+  }
+
+  let new_private_exp = gcdres[2];
+
+  document.getElementById('new_public_exp').innerHTML = new_public_exp;
+  let answerhash = sjcl.hash.sha256.hash(String(new_private_exp));
   document.getElementById('ans_hash').value = answerhash;
   return false;
 }
@@ -138,7 +154,7 @@ function checkAnswer() {
   let anshash = sjcl.hash.sha256.hash(ans);
   let realanshash = document.getElementById('ans_hash').value;
   if (anshash == realanshash) {
-    document.getElementById('anscheck_result').innerHTML = "Correct!";
+	  document.getElementById('anscheck_result').innerHTML = "Correct!";
   }
   else {
     document.getElementById('anscheck_result').innerHTML = "Incorrect";

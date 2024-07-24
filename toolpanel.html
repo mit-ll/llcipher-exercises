@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="./cryptoexercises-stylesheet.css" />
+<script src="./toolpanel.js"></script>
+<script src="./functions.js"></script>
+
+<h4>Convert Text to/from Number</h4>
+<form id="getIntegerTextConversion">
+    <table class="integerTextConversionTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData" id="conversionLabel">Text</td>
+            <td class="inputData">
+                <input class="numericField" id="conversion_text">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <!-- Note to self: because these fields are floated, they show
+                up in the window in the reverse order than expected! -->
+                <!-- number to text using up arrow -->
+                <button class="submitButton" id="numericConversionButton" onclick="numberToTextButtonClick();return false;">↑</button>
+                <!-- text to number using down arrow -->
+                <button class="submitButton" id="textConversionButton" onclick="textToNumberButtonClick();return false;">↓</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData" id="conversionLabel">Number</td>
+            <td class="inputData">
+                <input class="numericField" id="conversion_number">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Extended Greatest Common Denominator (GCD)</h4>
+<form id="getExtendedGCD">
+    <table class="extendedGCDTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="egcd_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b</td>
+            <td class="inputData">
+                <input class="numericField" id="egcd_b">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="extendedGCDButton" onclick="egcdButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">GCD</td>
+            <td class="inputData">
+                <input class="numericField" id="gcd_result">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">a<sup>-1</sup> mod b</td>
+            <td class="inputData">
+                <input class="numericField" id="gcd_inverse_a_result">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b<sup>-1</sup> mod a</td>
+            <td class="inputData">
+                <input class="numericField" id="gcd_inverse_b_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Modular Exponent</h4>
+<form id="getModularExponent">
+    <p class="formula">Result = a<sup>b</sup> mod n</p>
+    <table class="modularExponentTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_exponent_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_exponent_b">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">n</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_exponent_n">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="modularExponentButton" onclick="modexpButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">Result</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_exponent_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Modular Inversion</h4>
+<form id="getModularInversion">
+    <p class="formula">Result = a<sup>-1</sup> mod n</p>
+    <table class="modularInversionTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_inversion_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">n</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_inversion_n">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="modularInversionButton" onclick="modinvButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">Result</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_inversion_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Modular Product</h4>
+<form id="getModularProduct">
+    <p class="formula">Result = (a × b) mod n</p>
+    <table class="modularProductTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_product_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_product_b">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">n</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_product_n">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="modularProductButton" onclick="modprodButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">Result</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_product_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Modular Sum</h4>
+<form id="getModularSum">
+    <p class="formula">Result = (a + b) mod n</p>
+    <table class="modularSumTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_sum_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_sum_b">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">n</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_sum_n">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="modularSumButton" onclick="modsumButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">Result</td>
+            <td class="inputData">
+                <input class="numericField" id="modular_sum_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the Product</h4>
+<form id="getProduct">
+    <p class="formula">Result = (a × b)</p>
+    <table class="productTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="product_a">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">b</td>
+            <td class="inputData">
+                <input class="numericField" id="product_b">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="productButton" onclick="prodButtonClick();return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">Result</td>
+            <td class="inputData">
+                <input class="numericField" id="product_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+<!------------------------------------------------------------------------------
+//
+------------------------------------------------------------------------------->
+<h4>Find the R<sup>th</sup> Root</h4>
+<form id="getRthRoot">
+    <table class="rthRootTable" cellspacing="0">
+        <tbody><tr>
+            <td class="labelData">r</td>
+            <td class="inputData">
+                <input class="numericField" id="rth_root_r">
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">a</td>
+            <td class="inputData">
+                <input class="numericField" id="rth_root_a">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button class="submitButton" id="nthRootButton" onclick="rootButtonClick(); return false;">Compute</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="labelData">a<sup>1/r</sup></td>
+            <td class="inputData">
+                <input class="numericField" id="rth_root_result">
+            </td>
+        </tr>
+    </tbody></table>
+</form>
+</html>

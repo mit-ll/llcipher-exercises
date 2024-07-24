@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Exercises</title>
+  <link rel="stylesheet" href="./cryptoexercises-stylesheet.css" />
+  <script src="./sjcl.js"></script>
+  <script src="./functions.js"></script>
+</head>
+<body onload="loadProblem()">
+<!----------------------------------------------------------------------------->
+<header>
+  <table class="headerTable" cellspacing="0">
+    <tr>
+      <td class="left">
+        <img class="bannerImage" src="./LLCipher_logo.png" alt="Llcipher logo" />
+      </td>
+      <td class="middle">
+        <p>Cryptography Challenges</p>
+      </td>
+      <td class="right">
+        <img class="lincolnLogo" src="./lincoln_logo.png" alt="Lincoln logo" />
+      </td>
+    </tr>
+  </table>
+</header>
+<!----------------------------------------------------------------------------->
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Background</li>
+    <li><a href="./el_gamal_encryption.html">El Gamal Encryption</a>
+    <li><a href="./rsa_encryption.html">RSA Encryption</a>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Challenges</li>
+    <li><a href="./classical_crypto.html">Classical Crypto</a></li>
+    <li><a href="./exercise_one.html">RSA Challenge One</a></li>
+    <li><a href="./exercise_two.html">RSA Challenge Two</a></li>
+    <li><a href="./exercise_three.html">RSA Challenge Three</a></li>
+    <li><a href="./exercise_four.html">RSA Challenge Four</a></li>
+    <li><a href="./exercise_five.html">El Gamal Challenge</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Other Stuff</li>
+    <li><a href="./references.html">References</a></li>
+    <li><a href="./credits.html">Credits</a></li>
+  </ul>
+</nav>
+<!----------------------------------------------------------------------------->
+<article>
+<table class="exerciseLayoutTable" cellspacing="0">
+  <tr>
+<h1>El Gamal Encryption</h1>
+<p>Here, we summarize the El Gamal cryptosystem.
+Consult 
+<a href="https://en.wikipedia.org/wiki/ElGamal_encryption" target="wikipedia">wikipedia</a>
+ for more detail.</p>
+
+<p>
+
+<ul>
+  <li>KeyGen:
+  <!--
+  <li>KeyGen(k), where k is a security parameter:
+    <ul>
+    <li> Choose a random prime p such that p = 2q + 1 and q is also prime. </li>
+    <li> Choose a random generator g of the group of quadratic residues modulo p. </li>
+    <li> Choose the decryption exponent d randomly from {1, ... , q-1}. </li>
+    <li> Let e be g<sup>d</sup> mod p. </li>
+    <li> Return the public key pk = (e, g, p) and the secret key sk = d. </li>
+  </ul>
+  -->
+  <ul>
+    <li> Choose a random prime p. </li>
+    <li> Choose a random generator g modulo p. </li>
+    <li> Choose the decryption exponent x randomly from {1, ... , p-1}. </li>
+    <li> Let y be g<sup>x</sup> mod p. </li>
+    <li> Return the public key pk = (y, g, p) and the secret key sk = x. </li>
+  </ul>
+  </li>
+  <li>Enc(pk = (y, g, p), m), where m is a message to be encrypted:
+  <ul>
+    <li> Choose r randomly from {1, ..., p-1}. </li>
+    <li> Let s = y<sup>r</sup>. </li>
+    <li> Let c<sub>1</sub> = g<sup>r</sup> mod p. </li>
+    <li> Let c<sub>2</sub> = sm mod p. </li> 
+    <li> Return the ciphertext c = (c<sub>1</sub>, c<sub>2</sub>). </li>
+  </ul>
+  <li>Dec(sk = x, c), where c is a ciphertext to be decrypted:
+  <ul>
+    <li> Let s = c<sub>1</sub><sup>x</sup> mod p. </li>
+    <li> Return the recovered message m = (c<sub>2</sub> / s) mod p. </li>
+  </ul>
+  </li>
+</ul>
+
+  </tr>
+</table>  
+</article>
+<!----------------------------------------------------------------------------->
+<footer>
+<small>
+&copy; 2016, by Uri Blumenthal, Jeff Diewald, and Sophia Yakoubov, and 2024, by David Wilson and Nick Cunningham
+</small>
+</footer>
+</body>
+</html>

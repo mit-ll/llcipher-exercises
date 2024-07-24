@@ -1,1 +1,331 @@
-@media screen{html{margin:1em;padding:0}article{float:right;margin:0.5em 0 0.5em 0;width:84%}article,footer,header{display:block}header{border:3px double blue;height:5em;margin:0;padding:0}header p{font-size:150%}nav{color:white;float:left;margin:1.2em 0 0.5em 0;width:15%}nav ul{background-color:rgba(0,128,255,0.3);border:1px solid blue;border-bottom:0;list-style-type:none;margin:0;margin-left:0;padding:0;text-align:left}nav ul li{border-bottom:1px solid blue}nav ul li.title{background-color:blue;color:white;padding:5px}nav ul li a,nav ul li a:visited{color:black;display:block;padding:5px;text-decoration:none}nav ul li a:hover{background-color:rgba(0,128,255,0.5);color:white}}@media print{html{margin:1em 2em 2em 5em;padding:0}article{margin:0.5em 0 0.5em 0}article,footer,header{display:block}header,nav{display:none}}body{font:100% Helvetica;margin:0;padding:0}button.submitButton{float:right}div.answerDescription,div.exerciseDescription,div.findMeLocation,div.helpfulReference{background-color:rgba(0,0,255,0.05);border:1px solid blue;padding:0.5em}div.answerDescription,div.exerciseDescription,div.helpfulReference{margin:1em}div.findMeLocation{display:none;margin:1.5em 8em;text-align:center}footer,h1,h4{border-top:1px solid black;border-left:1px solid black;margin:0.5em 0 0 0;padding:0.25em}footer{clear:both}img.bannerImage{margin-left:0.5em;height:3em}img.formula_image{padding:5px}img.lincolnLogo{float:right;height:3.0em;margin-bottom:0.4em;margin-top:0.4em;margin-right:0.5em}input.numericField{text-align:right;width:100%}label.answer{vertical-align:top}p.authors{margin-top:0}p.formula{font:80% Courier;margin:0;text-align:center}p.reference{font-size:125%;font-style:italic;margin-bottom:0.25em}table{border-bottom:1px solid blue;border-right:1px solid blue;margin:0.5em 0;padding:0;width:100%}table.answerFormTable{background-color:rgba(0,0,255,0.05);border:1px solid blue;margin:1em 0;padding:5px;width:auto}table.answerFormTable td{border:0}table.chineseRemainderTable,table.extendedGCDTable,table.integerTextConversionTable,table.modularExponentTable,table.modularInversionTable,table.modularProductTable,table.modularSumTable,table.productTable,table.rthRootTable{border:0;width:100%}table.creditsTable{width:auto}table.exerciseLayoutTable{border:0;margin:0;padding:0}table.exerciseValuesTable{font-size:75%}table.chineseRemainderTable td,table.extendedGCDTable td,table.integerTextConversionTable td,table.modularExponentTable td,table.modularInversionTable td,table.modularProductTable td,table.modularSumTable td,table.productTable td,table.rthRootTable td{border:0}table.headerTable{border:0;height:4.5em;margin:0;padding:0;width:100%}table.headerTable td{border:0;width:33%}td{border-top:1px solid blue;border-left:1px solid blue;padding:5px}td.cryptoToolkit{border-bottom:0;border-right:0;border-top:0;margin-left:0.5em;padding:0.25em 0 0 0.5em;vertical-align:top;width:25%}td.definition{vertical-align:top}td.exerciseDetails{border:0;padding:0 0.5em;vertical-align:top;width:70%}td.exerciseId{text-align:center;white-space:nowrap}td.hashHeaderKey,td.hashHeaderValue{background-color:rgba(0,128,255,0.3);font-weight:bold}td.identifier,td.name,td.value{text-align:center}td.inputData{width:70%}td.labelData{text-align:right;vertical-align:top;white-space:nowrap;width:25%}td.left{text-align:left}td.left p{margin-left:0.5em}td.middle{text-align:center}td.term{font-weight:bold;vertical-align:top}tr.evenRow{background-color:rgba(0,0,255,0.05)}tr.headerRow{background-color:rgba(0,128,255,0.3);font-weight:bold}
+@media screen {
+ html {
+  margin: 1em;
+  padding: 0
+ }
+
+ article {
+  float: right;
+  margin: 0.5em 0 0.5em 0;
+  width: 84%
+ }
+
+ article,
+ footer,
+ header {
+  display: block
+ }
+
+ header {
+  border: 3px double blue;
+  height: 5em;
+  margin: 0;
+  padding: 0
+ }
+
+ header p {
+  font-size: 150%
+ }
+
+ nav {
+  color: white;
+  float: left;
+  margin: 1.2em 0 0.5em 0;
+  width: 15%
+ }
+
+ nav ul {
+  background-color: rgba(0, 128, 255, 0.3);
+  border: 1px solid blue;
+  border-bottom: 0;
+  list-style-type: none;
+  margin: 0;
+  margin-left: 0;
+  padding: 0;
+  text-align: left
+ }
+
+ nav ul li {
+  border-bottom: 1px solid blue
+ }
+
+ nav ul li.title {
+  background-color: blue;
+  color: white;
+  padding: 5px
+ }
+
+ nav ul li a,
+ nav ul li a:visited {
+  color: black;
+  display: block;
+  padding: 5px;
+  text-decoration: none
+ }
+
+ nav ul li a:hover {
+  background-color: rgba(0, 128, 255, 0.5);
+  color: white
+ }
+}
+
+@media print {
+ html {
+  margin: 1em 2em 2em 5em;
+  padding: 0
+ }
+
+ article {
+  margin: 0.5em 0 0.5em 0
+ }
+
+ article,
+ footer,
+ header {
+  display: block
+ }
+
+ header,
+ nav {
+  display: none
+ }
+}
+
+body {
+ font: 100% Helvetica;
+ margin: 0;
+ padding: 0
+}
+
+button.submitButton {
+ float: right
+}
+
+div.answerDescription,
+div.exerciseDescription,
+div.findMeLocation,
+div.helpfulReference {
+ background-color: rgba(0, 0, 255, 0.05);
+ border: 1px solid blue;
+ padding: 0.5em
+}
+
+div.answerDescription,
+div.exerciseDescription,
+div.helpfulReference {
+ margin: 1em
+}
+
+div.findMeLocation {
+ display: none;
+ margin: 1.5em 8em;
+ text-align: center
+}
+
+footer,
+h1,
+h4 {
+ border-top: 1px solid black;
+ border-left: 1px solid black;
+ margin: 0.5em 0 0 0;
+ padding: 0.25em
+}
+
+footer {
+ clear: both
+}
+
+img.bannerImage {
+ margin-left: 0.5em;
+ height: 3em
+}
+
+img.formula_image {
+ padding: 5px
+}
+
+img.lincolnLogo {
+ float: right;
+ height: 3.0em;
+ margin-bottom: 0.4em;
+ margin-top: 0.4em;
+ margin-right: 0.5em
+}
+
+input.numericField {
+ text-align: right;
+ width: 100%
+}
+
+label.answer {
+ vertical-align: top
+}
+
+p.authors {
+ margin-top: 0
+}
+
+p.formula {
+ font: 80% Courier;
+ margin: 0;
+ text-align: center
+}
+
+p.reference {
+ font-size: 125%;
+ font-style: italic;
+ margin-bottom: 0.25em
+}
+
+table {
+ border-bottom: 1px solid blue;
+ border-right: 1px solid blue;
+ margin: 0.5em 0;
+ padding: 0;
+ width: 100%
+}
+
+table.answerFormTable {
+ background-color: rgba(0, 0, 255, 0.05);
+ border: 1px solid blue;
+ margin: 1em 0;
+ padding: 5px;
+ width: auto
+}
+
+table.answerFormTable td {
+ border: 0
+}
+
+table.chineseRemainderTable,
+table.extendedGCDTable,
+table.integerTextConversionTable,
+table.modularExponentTable,
+table.modularInversionTable,
+table.modularProductTable,
+table.modularSumTable,
+table.productTable,
+table.rthRootTable {
+ border: 0;
+ width: 100%
+}
+
+table.creditsTable {
+ width: auto
+}
+
+table.exerciseLayoutTable {
+ border: 0;
+ margin: 0;
+ padding: 0
+}
+
+table.exerciseValuesTable {
+ font-size: 75%
+}
+
+table.chineseRemainderTable td,
+table.extendedGCDTable td,
+table.integerTextConversionTable td,
+table.modularExponentTable td,
+table.modularInversionTable td,
+table.modularProductTable td,
+table.modularSumTable td,
+table.productTable td,
+table.rthRootTable td {
+ border: 0
+}
+
+table.headerTable {
+ border: 0;
+ height: 4.5em;
+ margin: 0;
+ padding: 0;
+ width: 100%
+}
+
+table.headerTable td {
+ border: 0;
+ width: 33%
+}
+
+td {
+ border-top: 1px solid blue;
+ border-left: 1px solid blue;
+ padding: 5px
+}
+
+td.cryptoToolkit {
+ border-bottom: 0;
+ border-right: 0;
+ border-top: 0;
+ margin-left: 0.5em;
+ padding: 0.25em 0 0 0.5em;
+ vertical-align: top;
+ width: 25%
+}
+
+td.definition {
+ vertical-align: top
+}
+
+td.exerciseDetails {
+ border: 0;
+ padding: 0 0.5em;
+ vertical-align: top;
+ width: 70%
+}
+
+td.exerciseId {
+ text-align: center;
+ white-space: nowrap
+}
+
+td.hashHeaderKey,
+td.hashHeaderValue {
+ background-color: rgba(0, 128, 255, 0.3);
+ font-weight: bold
+}
+
+td.identifier,
+td.name,
+td.value {
+ text-align: center
+}
+
+td.inputData {
+ width: 70%
+}
+
+td.labelData {
+ text-align: right;
+ vertical-align: top;
+ white-space: nowrap;
+ width: 25%
+}
+
+td.left {
+ text-align: left
+}
+
+td.left p {
+ margin-left: 0.5em
+}
+
+td.middle {
+ text-align: center
+}
+
+td.term {
+ font-weight: bold;
+ vertical-align: top
+}
+
+tr.evenRow {
+ background-color: rgba(0, 0, 255, 0.05)
+}
+
+tr.headerRow {
+ background-color: rgba(0, 128, 255, 0.3);
+ font-weight: bold
+}

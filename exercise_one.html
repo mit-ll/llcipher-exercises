@@ -9,556 +9,174 @@
 <body onload="loadProblem()">
 <!----------------------------------------------------------------------------->
 <header>
-	<table class="headerTable" cellspacing="0">
-		<tr>
-			<td class="left">
-				<img class="bannerImage" src="./LLCipher_logo.png" alt="Llcipher logo" />
-			</td>
-			<td class="middle">
-				<p>Cryptography Challenges</p>
-			</td>
-			<td class="right">
-				<img class="lincolnLogo" src="./lincoln_logo.png" alt="Lincoln logo" />
-			</td>
-		</tr>
-	</table>
+  <table class="headerTable" cellspacing="0">
+    <tr>
+      <td class="left">
+        <img class="bannerImage" src="./LLCipher_logo.png" alt="Llcipher logo" />
+      </td>
+      <td class="middle">
+        <p>Cryptography Challenges</p>
+      </td>
+      <td class="right">
+        <img class="lincolnLogo" src="./lincoln_logo.png" alt="Lincoln logo" />
+      </td>
+    </tr>
+  </table>
 </header>
 <!----------------------------------------------------------------------------->
 <nav>
-	<ul>
-		<li><a href="/">Home</a></li>
-	</ul>
-	<br />
-	<ul>
-		<li class="title">Background</li>
-		<li><a href="/exercise/el_gamal_encryption">El Gamal Encryption</a>
-		<li><a href="/exercise/rsa_encryption">RSA Encryption</a>
-	</ul>
-	<br />
-	<ul>
-		<li class="title">Challenges</li>
-		<li><a href="/exercise/classical_crypto">Classical Crypto</a></li>
-		<li><a href="/exercise/exercise_one">RSA Challenge One</a></li>
-		<li><a href="/exercise/exercise_two">RSA Challenge Two</a></li>
-		<li><a href="/exercise/exercise_three">RSA Challenge Three</a></li>
-		<li><a href="/exercise/exercise_four">RSA Challenge Four</a></li>
-		<li><a href="/exercise/exercise_five">El Gamal Challenge</a></li>
-	</ul>
-	<br />
-	<ul>
-		<li class="title">Other Stuff</li>
-		<li><a href="/exercise/references">References</a></li>
-		<li><a href="/exercise/credits">Credits</a></li>
-	</ul>
+  <ul>
+    <li><a href="/">Home</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Background</li>
+    <li><a href="./el_gamal_encryption.html">El Gamal Encryption</a>
+    <li><a href="./rsa_encryption.html">RSA Encryption</a>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Challenges</li>
+    <li><a href="./classical_crypto.html">Classical Crypto</a></li>
+    <li><a href="./exercise_one.html">RSA Challenge One</a></li>
+    <li><a href="./exercise_two.html">RSA Challenge Two</a></li>
+    <li><a href="./exercise_three.html">RSA Challenge Three</a></li>
+    <li><a href="./exercise_four.html">RSA Challenge Four</a></li>
+    <li><a href="./exercise_five.html">El Gamal Challenge</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Other Stuff</li>
+    <li><a href="./references.html">References</a></li>
+    <li><a href="./credits.html">Credits</a></li>
+  </ul>
 </nav>
 <!----------------------------------------------------------------------------->
 <article>
 <table class="exerciseLayoutTable" cellspacing="0">
-	<tr>
-		<td class="exerciseDetails">
-			<h1>RSA Challenge One: RSA Small Message Space Attack</h1>
+  <tr>
+    <td class="exerciseDetails">
+      <h1>RSA Challenge One: RSA Small Message Space Attack</h1>
 <div class="exerciseDescription">
-	<p><b>The Problem:</b> Given an RSA ciphertext encrypting one of several messages, recover the message.</p>
+  <p><b>The Problem:</b> Given an RSA ciphertext encrypting one of several messages, recover the message.</p>
 </div>
 
 <div class="problemStatement">
-	<p>
-	You are a government agent trying to determine when your neighboring country, Malland, will attack.
-	You intercepted an encrypted message c from Malland to its ally, Horridland.
-	You know that the encrypted message uses RSA, and that the Mallanders are likely to be saying one of three things:
-	</p>
-	<ul>
-		<li>"attack tomorrow at dawn",</li>
-		<li>"attack just before dusk", or</li>
-		<li>"attack early next week".</li>
-	</ul>
-	<p>Use this knowledge to figure out what the message is.</p>
-	<p>For this exercise, use the following values:</p>
+  <p>
+  You are a government agent trying to determine when your neighboring country, Malland, will attack.
+  You intercepted an encrypted message c from Malland to its ally, Horridland.
+  You know that the encrypted message uses RSA, and that the Mallanders are likely to be saying one of three things:
+  </p>
+  <ul>
+    <li>"attack tomorrow at dawn",</li>
+    <li>"attack just before dusk", or</li>
+    <li>"attack early next week".</li>
+  </ul>
+  <p>Use this knowledge to figure out what the message is.</p>
+  <p>For this exercise, use the following values:</p>
 <table class="exerciseValuesTable" cellspacing="0">
-	<tr class="headerRow">
-		<td class="name">Name</td>
-		<td class="value">Value</td>
-	</tr>
-		<tr class="oddRow">
-			<td class="name">Modulus:</td>
-			<td class="value"><div id="modulus"></div></td>
-		</tr>
-		<tr class="evenRow">
-			<td class="name">Exponent:</td>
-			<td class="value"><div id="exponent"></div></td>
-		</tr>
-		<tr class="oddRow">
-			<td class="name">Ciphertext:</td>
-			<td class="value"><div id="ciphertext"></div></td>
-		</tr>
+  <tr class="headerRow">
+    <td class="name">Name</td>
+    <td class="value">Value</td>
+  </tr>
+    <tr class="oddRow">
+      <td class="name">Modulus:</td>
+      <td class="value"><div id="modulus"></div></td>
+    </tr>
+    <tr class="evenRow">
+      <td class="name">Exponent:</td>
+      <td class="value"><div id="exponent"></div></td>
+    </tr>
+    <tr class="oddRow">
+      <td class="name">Ciphertext:</td>
+      <td class="value"><div id="ciphertext"></div></td>
+    </tr>
 </table>
 
 <form class="new_exercise">
-	<table class="answerFormTable" cellspacing="0">
-		<tr>
-			<td>
-				<!--
-				# The size of this text area is probably much smaller, but may
-				# also vary from exercise to exercise. The right answer is 
-				# probably to see if this value can be moved into CSS, and
-				# then change the class name based on the exercise.
-				-->
-				<label class="answer" for="exercise_answer">Your Answer:</label>
-				<textarea class="answer" name="exercise[answer]" id="exercise_answer" cols="100" rows="20">
+  <table class="answerFormTable" cellspacing="0">
+    <tr>
+      <td>
+        <!--
+        # The size of this text area is probably much smaller, but may
+        # also vary from exercise to exercise. The right answer is 
+        # probably to see if this value can be moved into CSS, and
+        # then change the class name based on the exercise.
+        -->
+        <label class="answer" for="exercise_answer">Your Answer:</label>
+        <textarea class="answer" name="exercise[answer]" id="exercise_answer" cols="100" rows="20">
 </textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>
-			   	<!-- 
-			   	# Save the answer hash
-			   	-->
-			   	<input value="" type="hidden" id="ans_hash" />
-				<input type="submit" name="commit" value="Send Your Answer" onclick="checkAnswer(); return false;" />
-				<div id="anscheck_result"></div>
-			</td>
-		</tr>
-	</table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+           <!-- 
+           # Save the answer hash
+           -->
+           <input value="" type="hidden" id="ans_hash" />
+        <input type="submit" name="commit" value="Check Your Answer" onclick="checkAnswer(); return false;" />
+        <div id="anscheck_result"></div>
+      </td>
+    </tr>
+  </table>
 </form>
 </div>
-
-<div class="findMeLocation">
-	<p>Find me in app/views/exercise/exercise_one.html.erb</p>
-</div>
-
-		</td>
-		<td class="cryptoToolkit">
-			<script>
-		
+<!-- Create and check problems -->
+<script>
 function loadProblem() {
-	let msgs = ["attack tomorrow at dawn", "attack just before dusk", "attack early next week"];
-	let index = Math.floor(Math.random() * msgs.length);
-	let msgval = textToNumber(msgs[index]);
-	let rsa = genRSA(rsa_bits);
-	let modulus = rsa[0];
-	let exponent = rsa[1];
-	let ctext = modExp(msgval, exponent, modulus);
-	
-	document.getElementById('modulus').innerHTML = modulus;
-	document.getElementById('exponent').innerHTML = exponent;
-	document.getElementById('ciphertext').innerHTML = ctext;
-	let answerhash = sjcl.hash.sha256.hash(msgs[index]);
-	document.getElementById('ans_hash').value = answerhash;
-	return false;
+  let msgs = ["attack tomorrow at dawn", "attack just before dusk", "attack early next week"];
+  let index = Math.floor(Math.random() * msgs.length);
+  let msgval = textToNumber(msgs[index]);
+  let rsa = genRSA(rsa_bits);
+  let modulus = rsa[0];
+  let exponent = rsa[1];
+  let ctext = modExp(msgval, exponent, modulus);
+  
+  document.getElementById('modulus').innerHTML = modulus;
+  document.getElementById('exponent').innerHTML = exponent;
+  document.getElementById('ciphertext').innerHTML = ctext;
+  let answerhash = sjcl.hash.sha256.hash(msgs[index]);
+  document.getElementById('ans_hash').value = answerhash;
+  return false;
 }
 
 function checkAnswer() {
-	let ans = document.getElementById('exercise_answer').value;
-	let anshash = sjcl.hash.sha256.hash(ans);
-	let realanshash = document.getElementById('ans_hash').value;
-	if (anshash == realanshash) {
-		document.getElementById('anscheck_result').innerHTML = "Correct!";
-	}
-	else {
-		document.getElementById('anscheck_result').innerHTML = "Incorrect";
-	}
-	return false;
-}
-
-function egcdButtonClick() {
-	let a = document.getElementById('egcd_a').value;
-	let b = document.getElementById('egcd_b').value;
-	let res = extendedGCD(BigInt(a), BigInt(b));
-	document.getElementById('gcd_result').value = res[0];
-	document.getElementById('gcd_inverse_a_result').value = res[1];
-	document.getElementById('gcd_inverse_b_result').value = res[2];
-	return false;
-}
-
-function modexpButtonClick() {
-	let a = document.getElementById('modular_exponent_a').value;
-	let b = document.getElementById('modular_exponent_b').value;
-	let n = document.getElementById('modular_exponent_n').value;
-	document.getElementById('modular_exponent_result').value = modExp(BigInt(a), BigInt(b), BigInt(n));
-	return false;
-}
-
-function modinvButtonClick() {
-	let a = document.getElementById('modular_inversion_a').value;
-	let n = document.getElementById('modular_inversion_n').value;
-	document.getElementById('modular_inversion_result').value = modinv(BigInt(a), BigInt(n));
-	return false;
-}
-
-function modprodButtonClick() {
-	let a = document.getElementById('modular_product_a').value;
-	let b = document.getElementById('modular_product_b').value;
-	let n = document.getElementById('modular_product_n').value;
-	document.getElementById('modular_product_result').value = modprod(BigInt(a), BigInt(b), BigInt(n));
-	return false;
-}
-
-function modsumButtonClick() {
-	let a = document.getElementById('modular_sum_a').value;
-	let b = document.getElementById('modular_sum_b').value;
-	let n = document.getElementById('modular_sum_n').value;
-	document.getElementById('modular_sum_result').value = modsum(BigInt(a), BigInt(b), BigInt(n));
-	return false;
-}
-
-function textToNumberButtonClick() {
-	let txt = document.getElementById('conversion_text').value;
-	document.getElementById('conversion_number').value = textToNumber(txt);
-	return false;
-}
-
-function numberToTextButtonClick() {
-	let n = document.getElementById('conversion_number').value;
-	document.getElementById('conversion_text').value = numberToText(BigInt(n));
-	return false;
-}
-
-function rootButtonClick() {
-	let r = document.getElementById('rth_root_r').value;
-	let a = document.getElementById('rth_root_a').value;
-	document.getElementById('rth_root_result').value = root(BigInt(r), BigInt(a));
-	return false;
-}
-
-function prodButtonClick() {
-	let a = document.getElementById('product_a').value;
-	let b = document.getElementById('product_b').value;
-	document.getElementById('product_result').value = BigInt(a)*BigInt(b);
-	return false;
+  let ans = document.getElementById('exercise_answer').value;
+  let anshash = sjcl.hash.sha256.hash(ans);
+  let realanshash = document.getElementById('ans_hash').value;
+  if (anshash == realanshash) {
+	  document.getElementById('anscheck_result').innerHTML = "Correct!";
+  }
+  else {
+    document.getElementById('anscheck_result').innerHTML = "Incorrect";
+  }
+  return false;
 }
 </script>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Convert Text to/from Number</h4>
-<form id="getIntegerTextConversion">
-	<table class="integerTextConversionTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData" id="conversionLabel">Text</td>
-			<td class="inputData">
-				<input class="numericField" id="conversion_text">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<!-- Note to self: because these fields are floated, they show
-				up in the window in the reverse order than expected! -->
-				<!-- number to text using up arrow -->
-				<button class="submitButton" id="numericConversionButton" onclick="numberToTextButtonClick();return false;">↑</button>
-				<!-- text to number using down arrow -->
-				<button class="submitButton" id="textConversionButton" onclick="textToNumberButtonClick();return false;">↓</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData" id="conversionLabel">Number</td>
-			<td class="inputData">
-				<input class="numericField" id="conversion_number">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-<h4>Find the Chinese Remainder</h4>
-<form id="getChineseRemainder">
-	<table class="chineseRemainderTable" cellspacing="0">
-		<tr>
-			<td class="labelData">
-				 Modulus
-			</td>
-			<td class="inputData">
-					<input class="numericField" 
-						   id="chineseRemainderModuli_0" 
-						   value="" />
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">
-				 Ciphertext
-			</td>
-			<td class="inputData">
-					<input class="numericField" 
-						   id="chineseRemainderCipher_0" 
-						   value="" />
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" 
-						id="extendedChineseRemainderButton" 
-						onclick="return makeAjaxCall(
-							'/exercise/compute_chinese_remainder',
-							getChineseRemainderData, 
-							setChineseRemainderResult);">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="chineseRemainderResult" />
-			</td>
-		</tr>
-	</table>
-</form>
-//
-------------------------------------------------------------------------------->
-<h4>Find the Extended Greatest Common Denominator (GCD)</h4>
-<form id="getExtendedGCD">
-	<table class="extendedGCDTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="egcd_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b</td>
-			<td class="inputData">
-				<input class="numericField" id="egcd_b">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="extendedGCDButton" onclick="egcdButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">GCD</td>
-			<td class="inputData">
-				<input class="numericField" id="gcd_result">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">a<sup>-1</sup> mod b</td>
-			<td class="inputData">
-				<input class="numericField" id="gcd_inverse_a_result">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b<sup>-1</sup> mod a</td>
-			<td class="inputData">
-				<input class="numericField" id="gcd_inverse_b_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the Modular Exponent</h4>
-<form id="getModularExponent">
-	<p class="formula">Result = a<sup>b</sup> mod n</p>
-	<table class="modularExponentTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_exponent_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_exponent_b">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">n</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_exponent_n">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="modularExponentButton" onclick="modexpButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_exponent_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the Modular Inversion</h4>
-<form id="getModularInversion">
-	<p class="formula">Result = a<sup>-1</sup> mod n</p>
-	<table class="modularInversionTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_inversion_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">n</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_inversion_n">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="modularInversionButton" onclick="modinvButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_inversion_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the Modular Product</h4>
-<form id="getModularProduct">
-	<p class="formula">Result = (a × b) mod n</p>
-	<table class="modularProductTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_product_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_product_b">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">n</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_product_n">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="modularProductButton" onclick="modprodButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_product_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the Modular Sum</h4>
-<form id="getModularSum">
-	<p class="formula">Result = (a + b) mod n</p>
-	<table class="modularSumTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_sum_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_sum_b">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">n</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_sum_n">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="modularSumButton" onclick="modsumButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="modular_sum_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the Product</h4>
-<form id="getProduct">
-	<p class="formula">Result = (a × b)</p>
-	<table class="productTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="product_a">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">b</td>
-			<td class="inputData">
-				<input class="numericField" id="product_b">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="productButton" onclick="prodButtonClick();return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">Result</td>
-			<td class="inputData">
-				<input class="numericField" id="product_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
-<!------------------------------------------------------------------------------
-//
-------------------------------------------------------------------------------->
-<h4>Find the R<sup>th</sup> Root</h4>
-<form id="getRthRoot">
-	<table class="rthRootTable" cellspacing="0">
-		<tbody><tr>
-			<td class="labelData">r</td>
-			<td class="inputData">
-				<input class="numericField" id="rth_root_r">
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">a</td>
-			<td class="inputData">
-				<input class="numericField" id="rth_root_a">
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button class="submitButton" id="nthRootButton" onclick="rootButtonClick(); return false;">Compute</button>
-			</td>
-		</tr>
-		<tr>
-			<td class="labelData">a<sup>1/r</sup></td>
-			<td class="inputData">
-				<input class="numericField" id="rth_root_result">
-			</td>
-		</tr>
-	</tbody></table>
-</form>
 
-		</td>
-	</tr>
-</table>	
+    </td>
+    <!-- start tool panel -->
+    <td class="cryptoToolkit"> 
+      <iframe
+      src="./toolpanel.html"
+      frameborder="0"
+      scrolling="yes"
+      seamless="seamless"
+      style="display:block;
+      width:100%;
+      height:85vh;"
+      >
+      </iframe>
+    </td>
+    <!-- end tool panel -->
+  </tr>
+</table>  
 </article>
 <!----------------------------------------------------------------------------->
 <footer>
-&copy; 2016, by Uri Blumenthal, Jeff Diewald, and Sophia Yakoubov
+<small>
+&copy; 2016, by Uri Blumenthal, Jeff Diewald, and Sophia Yakoubov, and 2024, by David Wilson and Nick Cunningham
+</small>
 </footer>
 </body>
 </html>

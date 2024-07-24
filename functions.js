@@ -210,6 +210,11 @@ const getRandomPrime = function (numBits) {
 
 const rsa_bits = 512;
 // Returns a new random set of RSA parameters (n, e, p, q, d)
+// Reminder:
+// n: modulus
+// e: public exponent
+// p, q: primes
+// d: e^-1 mod phi(n)
 const genRSA = function (numBits) {
 	let p = getRandomPrime(Math.floor((numBits+1)/2));
 	let q = getRandomPrime(Math.floor(numBits/2));
@@ -224,26 +229,29 @@ const genRSA = function (numBits) {
 	return [n, e, p, q, gcdres[2]];  // gcdres[2] = d = e^(-1) mod phi(n)
 }
 
-// Returns a new random set of RSA parameters (n, e, p, q, d) where e=3.
-// Since we need e*d = 1 mod phi(n), 3 has to be relatively prime to phi(n) = (p-1)(q-1).  
-// This (along with the fact that p and q are prime, and presumably bigger than 3) 
-// implies that p and q are each congruent to 2 mod 3.
-const genRSAWithExpThree = function (numBits) {
+// Returns a new random set of RSA parameters (n, e, p, q, d) where e is predefined.
+// Please don't pass in a non-prime e.
+// Since we need e*d = 1 mod phi(n), e has to be relatively prime to phi(n) = (p-1)(q-1).
+// So, (p-1) % e must be nonzero; or,
+// p % e != 1.
+// Also, p % e != 0 assuming p != e, since they're both prime.
+// The same is true of q.
+// So, we require that p % e > 1 and q % e > 1.
+const genRSAWithPubExp = function (numBits, pubexp) {
+	let e = BigInt(pubexp)
 	let p = getRandomPrime(Math.floor((numBits+1)/2));
-	while (p % 3n != 2n) {
+	while (p % e < 2n) {
 		p = getRandomPrime(Math.floor((numBits+1)/2));
 	}
 	let q = getRandomPrime(Math.floor(numBits/2));
-	while (q % 3n != 2n) {
+	while (q % e < 2n) {
 		q = getRandomPrime(Math.floor(numBits/2));
 	}
 	let n = p * q;
-	let e = 3n;
 	let phin = (p-1n)*(q-1n);
 	let gcdres = extendedGCD(phin, e);
 	return [n, e, p, q, gcdres[2]];  // gcdres[2] = d = e^(-1) mod phi(n)
 }
-
 
 const message_verbs = ["march on", "charge", "sail to", "leave for", "attack", "fire on"];
 const message_locations = ["capital", "bay", "tower", "fort", "castle", "port", "village"];
@@ -253,8 +261,8 @@ const short_times = ["@ 1", "@ 2", "@ 3", "@ 4", "@ 5", "@ 6", "@ 7", "@ 8", "@ 
 
 const getShortMessage = function() {
 	let verb = message_verbs[Math.floor(Math.random() * message_verbs.length)];
-	let loc = message_verbs[Math.floor(Math.random() * message_location.length)];
-	let time = message_verbs[Math.floor(Math.random() * message_time.length)];
+	let loc = message_locations[Math.floor(Math.random() * message_locations.length)];
+	let time = message_times[Math.floor(Math.random() * message_times.length)];
 	return verb + " the " + loc + " at " + time;
 }
 

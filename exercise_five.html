@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,33 +56,59 @@
 <table class="exerciseLayoutTable" cellspacing="0">
   <tr>
     <td class="exerciseDetails">
-      <h1>RSA Challenge Two: RSA Small Plaintext and Encryption Exponent Attack</h1>
+      <h1>El Gamal Challenge: Randomness Reuse Attack</h1>
 <div class="exerciseDescription">
-  <p><b>The Problem:</b> Given an RSA ciphertext encrypting a small message with a small public key (e.g. e = 3), recover the message.</p>
+  <p><b>The Problem:</b> 
+  Given an encryption key, two ciphertexts which use the same random exponent y and the plaintext corresponding to one of those ciphertexts, recover the second plaintext.
+  </p>
 </div>
 
 <div class="problemStatement">
-  <p>Malland sent another message to Horridland; however, this time, you don't really know what they might be saying.
-  You do, however, know that the encryption exponent is e = 3, and that Mallanders tend to be very brief and to the point, so you think the message in question is probably very short.
-  Use this knowledge to figure out what the message is.
+  <p>
+  <!--
+  Since you have been breaking all of your enemies' communications using RSA, they have switched to using El Gamal encryption. 
+  -->
+  You intercept two ciphertexts c<sup>M</sup> and c<sup>A</sup> intended for Horridland; one from Malland, and one from Awfulland. 
+  Your agent in Awfulland figures out what Awfulland wants to communicate to Horridland; it is "I'm following your lead".
+  Since Malland has always been their plan-maker, in order to determine what Horridland, Malland and Awfulland will do, you need to figure out what Malland is communicating to Horridland. 
+  You know that your enemies are pretty bad at using cryptography, and that they sometimes forget to pick fresh randomness.
+  You suspect that they might have used the same random value y to create both ciphertexts.
+  Use this knowledge to figure out what Malland is trying to tell Horridland.
   </p>
-  <p>For this exercise, use the following values:</p>
+
+ <p>For this exercise, use the following values:</p>
 <table class="exerciseValuesTable" cellspacing="0">
   <tr class="headerRow">
     <td class="name">Name</td>
     <td class="value">Value</td>
   </tr>
     <tr class="oddRow">
-      <td class="name">Modulus: </td>
-      <td class="value"><div id="modulus"></div></td>
+      <td class="name">Modulus p</td>
+      <td class="value"><div id="modulus">81785994127709318289853065761955524169138231746284711479485415030808910423027</div></td>
     </tr>
     <tr class="evenRow">
-      <td class="name">Public exponent: </td>
-      <td class="value"><div id="exponent"></div></td>
+      <td class="name">Generator g</td>
+      <td class="value"><div id="generator">22516865910468801601308561429639052930860860822537909007768722786312195121817</div></td>
     </tr>
     <tr class="oddRow">
-      <td class="name">Ciphertext: </td>
-      <td class="value"><div id="ciphertext"></div></td>
+      <td class="name">Public key y</td>
+      <td class="value"><div id="public_key">36433769016903874501658143656773481666618078895123392319688941652668647230923</div></td>
+    </tr>
+    <tr class="evenRow">
+      <td class="name">First value of Awfulland's ciphertext c<sup>A</sup><sub>1</sub></td>
+      <td class="value"><div id="c_awful_1">2724206478530501383338955345475383902782782029131830001349892847110599761342</div></td>
+    </tr>
+    <tr class="oddRow">
+      <td class="name">Second value of Awfulland's ciphertext c<sup>A</sup><sub>2</sub></td>
+      <td class="value"><div id="c_awful_2">56947492839998276292281585728777115971816528660471377149682848374783094180495</div></td>
+    </tr>
+    <tr class="evenRow">
+      <td class="name">First value of Malland's ciphertext c<sup>M</sup><sub>1</sub></td>
+      <td class="value"><div id="c_mal_1">2724206478530501383338955345475383902782782029131830001349892847110599761342</div></td>
+    </tr>
+    <tr class="oddRow">
+      <td class="name">Second value of Malland's ciphertext c<sup>M</sup><sub>2</sub></td>
+      <td class="value"><div id="c_mal_2">77238632939744196443596630152689692898162213353150931759835351038294784582439</div></td>
     </tr>
 </table>
 
@@ -118,17 +143,8 @@
 <!-- Create and check problems -->
 <script>
 function loadProblem() {
-  let msg = getVeryShortMessage();
-  let msgval = textToNumber(msg);
-  let rsa = genRSAWithPubExp(rsa_bits, 3);
-  let modulus = rsa[0];
-  let exponent = rsa[1];
-  let ctext = modExp(msgval, exponent, modulus);
-  
-  document.getElementById('modulus').innerHTML = modulus;
-  document.getElementById('exponent').innerHTML = exponent;
-  document.getElementById('ciphertext').innerHTML = ctext;
-  let answerhash = sjcl.hash.sha256.hash(msg);
+  // if you're still checking, please don't cheat
+  let answerhash = sjcl.hash.sha256.hash("surround the enemy!");
   document.getElementById('ans_hash').value = answerhash;
   return false;
 }
@@ -138,7 +154,7 @@ function checkAnswer() {
   let anshash = sjcl.hash.sha256.hash(ans);
   let realanshash = document.getElementById('ans_hash').value;
   if (anshash == realanshash) {
-    document.getElementById('anscheck_result').innerHTML = "Correct!";
+	  document.getElementById('anscheck_result').innerHTML = "Correct!";
   }
   else {
     document.getElementById('anscheck_result').innerHTML = "Incorrect";

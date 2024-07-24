@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Exercises</title>
+  <link rel="stylesheet" href="./cryptoexercises-stylesheet.css" />
+  <script src="./sjcl.js"></script>
+  <script src="./functions.js"></script>
+</head>
+<body onload="loadProblem()">
+<!----------------------------------------------------------------------------->
+<header>
+  <table class="headerTable" cellspacing="0">
+    <tr>
+      <td class="left">
+        <img class="bannerImage" src="./LLCipher_logo.png" alt="Llcipher logo" />
+      </td>
+      <td class="middle">
+        <p>Cryptography Challenges</p>
+      </td>
+      <td class="right">
+        <img class="lincolnLogo" src="./lincoln_logo.png" alt="Lincoln logo" />
+      </td>
+    </tr>
+  </table>
+</header>
+<!----------------------------------------------------------------------------->
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Background</li>
+    <li><a href="./el_gamal_encryption.html">El Gamal Encryption</a>
+    <li><a href="./rsa_encryption.html">RSA Encryption</a>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Challenges</li>
+    <li><a href="./classical_crypto.html">Classical Crypto</a></li>
+    <li><a href="./exercise_one.html">RSA Challenge One</a></li>
+    <li><a href="./exercise_two.html">RSA Challenge Two</a></li>
+    <li><a href="./exercise_three.html">RSA Challenge Three</a></li>
+    <li><a href="./exercise_four.html">RSA Challenge Four</a></li>
+    <li><a href="./exercise_five.html">El Gamal Challenge</a></li>
+  </ul>
+  <br />
+  <ul>
+    <li class="title">Other Stuff</li>
+    <li><a href="./references.html">References</a></li>
+    <li><a href="./credits.html">Credits</a></li>
+  </ul>
+</nav>
+<!----------------------------------------------------------------------------->
+<article>
+<table class="exerciseLayoutTable" cellspacing="0">
+  <tr>
+<h1>Classical Cryptography Challenges</h1>
+
+<p> Use <a href="http://www.cryptool-online.org/index.php?option=com_content&view=article&id=47&Itemid=29&lang=en" target="cryptToolOnline">CryptToolOnline</a> to help you decrypt these ciphertexts. You may also find the <a href="./split_into_groups.py">split_into_groups.py</a>
+Python tool helpful with the Vigenere Cipher.</p>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #1: </b> Scytale Cipher</p>
+</div>
+-->
+<h4>Challenge #1: Scytale Cipher</h4>
+<div class="problemStatement">
+	<p>BEUEODOYRCTTBOEARHAUENEIRSVNAS</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #2: </b> Atbash Cipher</p>
+</div>
+-->
+<h4>Challenge #2: Atbash Cipher</h4>
+<div class="problemStatement">
+	<p>Ru hsv rh hnzig, nzbyv hsv xzm!</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #3: </b> Shift Cipher</p>
+</div>
+-->
+<h4>Challenge #3: Shift Cipher</h4>
+<div class="problemStatement">
+	<p>Znkt O znotq ck ynuarjt'z yge gteznotm zuu skgt ghuaz nkx, Huh.</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #4: </b> General Substitution Cipher</p>
+</div>
+-->
+<h4>Challenge #4: General Substitution Cipher</h4>
+<div class="problemStatement">
+	<p>BR ZKR KBR PBRRNR</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #5: </b> General Substitution Cipher</p>
+</div>
+-->
+<h4>Challenge #5: General Substitution Cipher</h4>
+<div class="problemStatement">
+	<p>
+	Fev yart jaluugicg, oez qruu iggh l ueicgv jrpagvygby yali oez hrh fev yag pvgsrezt jaluugicgt, ngjlztg oez iggh l ulvcg tlxpug ye ztg fvgmzgijo liluotrt qrya. Te, R qruu vgpvehzjg l uryyug nry ef Lurjg ri Qeihgvulih ngueq.
+	</p>
+	<p>
+Lurjg qlt ngcriiric ye cgy sgvo yrvgh ef tryyric no agv trtygv ei yag nlid, lih ef alsric ieyaric ye he: eijg ev yqrjg tag alh pggpgh riye yag need agv trtygv qlt vglhric, nzy ry alh ie prjyzvgt ev jeisgvtlyreit ri ry, 'lih qaly rt yag ztg ef l need,' yaezcay Lurjg 'qryaezy prjyzvgt ev jeisgvtlyreit?'
+	</p>
+	<p>
+Te tag qlt jeitrhgvric ri agv eqi xrih (lt qguu lt tag jezuh, fev yag aey hlo xlhg agv fggu sgvo tuggpo lih tyzprh), qagyagv yag pugltzvg ef xldric l hlrto-jalri qezuh ng qevya yag yveznug ef cgyyric zp lih prjdric yag hlrtrgt, qagi tzhhgiuo l Qaryg Vlnnry qrya prid gogt vli juetg no agv.
+	</p>
+	<p>
+Yagvg qlt ieyaric te sgvo vgxlvdlnug ri yaly; iev hrh Lurjg yarid ry te sgvo xzja ezy ef yag qlo ye aglv yag Vlnnry tlo ye rytguf, 'Ea hglv! Ea hglv! R taluu ng ulyg!' (qagi tag yaezcay ry esgv lfygvqlvht, ry ejjzvvgh ye agv yaly tag ezcay ye alsg qeihgvgh ly yart, nzy ly yag yrxg ry luu tggxgh mzryg ilyzvlu); nzy qagi yag Vlnnry ljyzluuo yeed l qlyja ezy ef ryt qlrtyjely-pejdgy, lih ueedgh ly ry, lih yagi azvvrgh ei, Lurjg tylvygh ye agv fggy, fev ry fultagh ljvett agv xrih yaly tag alh igsgv ngfevg tggi l vlnnry qrya gryagv l qlrtyjely-pejdgy, ev l qlyja ye yldg ezy ef ry, lih nzviric qrya jzvretryo, tag vli ljvett yag frguh lfygv ry, lih fevyzilyguo qlt kzty ri yrxg ye tgg ry pep heqi l ulvcg vlnnry-aeug zihgv yag aghcg.
+	</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #6: </b> Vigenere Cipher</p>
+</div>
+-->
+<h4>Challenge #6: Vigenere Cipher</h4>
+<div class="helpfulReference">
+	<p>Download the <a href="./split_into_groups.py">split_into_groups.py</a>
+    Python tool to help with the Vigenere Cipher.</p>
+  <p>You may also wish to use the <a href="https://legacy.cryptool.org/en/cto/vigenere">CrypTool Online Vigenere tool</a>.</p>
+</div>
+<div class="problemStatement">
+	<p>
+momg zq zvmbx rh ii smcg oefuck aloe ral tfvtbvyg tftspseex! zs, w'd ehpru km zpzs pmn hr smcg sefxck jliei hm ezzax pr kflwlvzrlw. 
+	</p>
+	<p>
+pr oemmoif dmflrh umpu aser tsmqv yyaif zr, glzsi mgji qfllphsiggn lcn gg als nmksh gyc phw hf exa sik yzhmb.
+	</p>
+	<p>
+kfx yepsgm-oszv uxux gkptpkvk mg smyv y mbrbvj yvv gfkx dem, rlw alse bbwtsu qnkhsejr kske, qh zyrucgsc hyym hpwtc ahh bfr t tsavlm as hyggr epfsm zxcgnbuk vvpllpt scyvvs jfx msieb alvgvjy mezcggn hcnl t cifp bxlt kvje.
+	</p>
+	<p>
+lmhyck als nces aoj txyc rvci, vv gyc ylpz mckf wzfuef, jci qal lou nelrhp my amav yl zls ncga hcnl mv pcfi tisik fxy ebu rh dsbuck dlok utz kczlz as vrnilr bvvm. mmfjr, loi higxk xc cmhr hcnl tuh arix vyh nfta wvv utz gcdggn xc, ssm px krq mvs rrpd as gvc tuchyggn; xvvl loi zfmdlh ok ral wwucl vj hyc plpz, rlw ushzaxk xvrr moim nckl jwcjxk awkf vbtpfykkw oeb uvsy-jfxszsj; fxyi oeb moifv qal won ktww oeb ipghlpxz liee nwsb gczz. wvv rhvo rfug h noi dkvq cec hm xvv qalpjvq tz wvv ntzwsu; gm deg cyulpzvb 'hyebxc fhvarjtki', plr mv lsi ekleh uglhtdfggaqser ba aoj cfwxm: jfx kmr emm smyv rh kvcg ral noi dhy jsrp hm owcjbuk gfkxisrp, qh tebrexk xc gsm px werh vrs fd moi qlnuvefuq tz wvv dxsp drqm px.
+	</p>
+	<p>
+'kvje!' alcleaa ezzax as vvpllpt, 'rdmlv glaa h jocj tz xvzq, b zlocj mombb lhalwee hm xidzepru umpu whrgkz! lcn zkhzs kfxf'pz rje alwei fl eh ymfl! avp, g pvyzul'm zem rlralwee tisik gm, lzse gy p jscj hmj hyc mvt cw ral lclqx!' (dlwtf phw jvpr smyvjr aviv.)
+	</p>
+	<p>
+bhdr, rfug, kske. uhbpr kfx mezc lxcif tmfl xc rl xuh! 'w nmgkif ymp tebp kbsig z'tx mezccg ic hygl amav?' qal wozb tssiu. 'g fbwh sc zlxhzlz zsavualvs ecty xvv axuxfv my als vykal. zvr fl wsv: rahx kfsek fs wmny xvfslhrr dgelw rfug, p xvzld?' (msf, pmn zis, rjbji vrb elefer llzsiye alweel vj hygl zsfk gg oif cclzsbj gg als jaavszimht, ebu ravyuy rapw krq gvx o mckf kcfb hwtcirnumhp dhy wvfubuk cwd alv yempsirxc, tz xvvpx deg em hui hf jbzxse rh oif, jrbsp wk utz kcfb iyeqkgvl xc jyr px cmck) '-fig, kfta'w osmna xvv pbnlh uglaebtc-ubx hycg p acebxy avrr ehxwkswl sf cmgnmhlbx p'zs xmm as?' (ocgvl lou lh phsr uahx zrrbayrv utz, sf cmgnmhlbx lmhyck, iyh kfhbkvk ralc kvpx umqv ekhrr nmkkw hf qtf.)
+tfvqxuxzp qal fsxyg hkozl. 'b dsbuck pj w jftsp trje ymuyr movclea als vykal! vfu ybrbp gm'sp gvcf as qfkx vyh rkhuk hyc ilsdcc moeh nyer awkf moiwi fxhhg umpuaoib! moi oerbwehygxz, m hyggr?' (wvv utz vokfxy kzrb moifv utz rc flx smgkcgpru, kfbz xwdc, tz mh ugwu'x gfsgk eh rje als igzox kfpw) '-iyh z qahpz yyol xc rqd alsd uahx hyc ghqs fd moi qfsgavm zq, rvy yemp. wpsrqx, te'od, gl alwj lxd dsrjtuh ci ynzxfrjbh?' (ebu qal xfzcw as qlpmzim rq loi ggmdl-joear jyfkqxfmbx yl fsi'ic yhpzzlz alffszo xvv yby! hc pmn alwei rvy qfsek qoeyzl mh?) 'rlw dlok yg pkbfptux zzrmsi uzpe zls'cj mombb kx msf rqdpru! em, ba'pz ecolv rf rh hwy: gckoedj g loezc qxl mh npbaxse si zsavualvs.'
+	</p>
+	<p>
+umpu, hcnl, wvab. kfxyi krq gvxvzlz lpgv rh ks, gf yepgs jmhu fsxyg aezbggn eurgg. 'kmbrf'es qwjq fl zsiw fbgv km-gpkvk, g losicb mombb!' (bbuev nyl als tym.) 'p lcgc moim'cj klqsdzxy lsi qtbgsi my tmzb ym aio-kgfl. hweya tc rvyk! p awjf rvy kvpx kske fxyi kzra ti! hyckl efv lh tmqv gg als rgk, p'q owptph, plr rvy azeaa gokaa h fok, ygk xvrr'l cifp jbri o dmnzi, mfs dusk. ssm ks qrrl leh symz, m kflwlv?' oeb alvs rjbji pvetu xc xcm yehyck zpsvnr, hrr ncga sb jyrpru km alvgvjy, pr o upxhqm jmka st nyr, 'ks qrrl leh symz? hc tymz iok ztaw?' oeb lvqskgflw, 'rf ztaw srr vhxg?' wmk, fsi jcx, hw gyc vvyzul'm hrgnck lmhyck xysjrbvr, wk bbkr'h dsvo qokrxy avzaa dem jfx wyh zr. loi tvjm alok qal aoj bhgmbx mym, ebu ftk nijr ulkie rh kvsrk moeh jfx deg nyermbx ftuh we ftuh kzra kmbrf, tuh grwbuk hf fxy zsiw xhvbvqmsc, 'bfu, wproy, rxsp av ral xflra: kmr pmn lzsi cta e prr?' poib jswkibcw, moyag! rabqd! umpu wvv atti igmg h lsrn hm whzadz ebu bkf psrtxz, ebu ral jocj phw cmck.
+	</p>
+	<p>
+hpwtc phw bfr t imh yska, ebu qal nidnxk yd fl mv lsi dxlx we y fvqser: loi zfmdlh ig, zna mh nyl hpz uykr sjvpaler; scyvvs yck deg rlhalsi jhuk drqlhks, rlw als nfbai frzupx krq lamzc gg zmuyr, abvfpggn hcnl ba. xvvpx deg emm h qcdcga xc sc evwh: rutf aser tsmqv jbri hyc pprr, rlw deg asla mb kgfl xc ycty mh jyr, hw wk rnyrsu y vvvbvp, 'ho qm vykz ebu uapwyvpl, osk cyml mh'j exaxwee!' loi krq vssgv zxombu gm dlse qal xiilxk xvv ahyrsi, zna xvv ptifwk utz rc cmgnif km ul wsvl: loi tfsgk lsiqxsj we y evru, cmp oezc, uapgv nyl smh ln uf e ffu hm podnl oebxggn jffk moi ffmy.
+	</p>
+</div>
+
+<!--
+<div class="exerciseDescription">
+	<p><b>Challenge #7: </b> ?</p>
+</div>
+-->
+<h4>Challenge #7: ???</h4>
+<div class="problemStatement">
+	<p>
+Ers, euv qvrttrp bx, mhuxzrl tvntxbxvxbuh dbszrlxrjx!
+	</p>
+	<p>
+Nryulr B sludrrp xu xzr Mibdr bh Guhprlimhp, uhr avbdw xzbhq: XZR DMHPE BT BH XZR NMDW LBQZX DULHRL. 
+	</p>
+	<p>
+Xzrlr grlr puult mii luvhp xzr zmii, nvx xzre grlr mii iudwrp; mhp gzrh Mibdr zmp nrrh mii xzr gme pugh uhr tbpr mhp vs xzr uxzrl, xlebhq rorle puul, tzr gmiwrp tmpie pugh xzr cbppir, guhprlbhq zug tzr gmt rorl xu qrx uvx mqmbh.
+	</p>
+	<p>
+Tvpprhie tzr dmcr vsuh m ibxxir xzlrr-irqqrp xmnir, mii cmpr uy tuibp qimtt; xzrlr gmt huxzbhq uh bx rjdrsx m xbhe quiprh wre, mhp Mibdr't ybltx xzuvqzx gmt xzmx bx cbqzx nriuhq xu uhr uy xzr puult uy xzr zmii; nvx, mimt! rbxzrl xzr iudwt grlr xuu imlqr, ul xzr wre gmt xuu tcmii, nvx mx mhe lmxr bx guvip hux usrh mhe uy xzrc. Zugrorl, uh xzr trduhp xbcr luvhp, tzr dmcr vsuh m iug dvlxmbh tzr zmp hux huxbdrp nryulr, mhp nrzbhp bx gmt m ibxxir puul mnuvx ybyxrrh bhdzrt zbqz: tzr xlbrp xzr ibxxir quiprh wre bh xzr iudw, mhp xu zrl qlrmx pribqzx bx ybxxrp!
+	</p>
+	<p>
+Mibdr usrhrp xzr puul mhp yuvhp xzmx bx irp bhxu m tcmii smttmqr, hux cvdz imlqrl xzmh m lmx-zuir: tzr whrix pugh mhp iuuwrp miuhq xzr smttmqr bhxu xzr iuoribrtx qmlprh euv rorl tmg. Zug tzr iuhqrp xu qrx uvx uy xzmx pmlw zmii, mhp gmhprl mnuvx mcuhq xzutr nrpt uy nlbqzx yiugrlt mhp xzutr duui yuvhxmbht, nvx tzr duvip hux rorh qrx zrl zrmp xzluvqz xzr puulgme; 'mhp rorh by ce zrmp guvip qu xzluvqz,' xzuvqzx suul Mibdr, 'bx guvip nr uy orle ibxxir vtr gbxzuvx ce tzuviprlt. Uz, zug B gbtz B duvip tzvx vs ibwr m xrirtdusr! B xzbhw B duvip, by B uhie whrg zug xu nrqbh.' Yul, euv trr, tu cmhe uvx-uy-xzr-gme xzbhqt zmp zmssrhrp imxrie, xzmx Mibdr zmp nrqvh xu xzbhw xzmx orle yrg xzbhqt bhprrp grlr lrmiie bcsuttbnir.
+Xzrlr trrcrp xu nr hu vtr bh gmbxbhq ne xzr ibxxir puul, tu tzr grhx nmdw xu xzr xmnir, zmiy zusbhq tzr cbqzx ybhp mhuxzrl wre uh bx, ul mx mhe lmxr m nuuw uy lvirt yul tzvxxbhq srusir vs ibwr xrirtdusrt: xzbt xbcr tzr yuvhp m ibxxir nuxxir uh bx, ('gzbdz drlxmbhie gmt hux zrlr nryulr,' tmbp Mibdr,) mhp luvhp xzr hrdw uy xzr nuxxir gmt m smsrl imnri, gbxz xzr gulpt 'PLBHW CR' nrmvxbyviie slbhxrp uh bx bh imlqr irxxrlt.
+	</p>
+	<p>
+Bx gmt mii orle grii xu tme 'Plbhw cr,' nvx xzr gbtr ibxxir Mibdr gmt hux qubhq xu pu xzmx bh m zvlle. 'Hu, B'ii iuuw ybltx,' tzr tmbp, 'mhp trr gzrxzrl bx't cmlwrp "subtuh" ul hux'; yul tzr zmp lrmp trorlmi hbdr ibxxir zbtxulbrt mnuvx dzbiplrh gzu zmp qux nvlhx, mhp rmxrh vs ne gbip nrmtxt mhp uxzrl vhsirmtmhx xzbhqt, mii nrdmvtr xzre guvip hux lrcrcnrl xzr tbcsir lvirt xzrbl ylbrhpt zmp xmvqzx xzrc: tvdz mt, xzmx m lrp-zux suwrl gbii nvlh euv by euv zuip bx xuu iuhq; mhp xzmx by euv dvx euvl ybhqrl orle prrsie gbxz m whbyr, bx vtvmiie nirrpt; mhp tzr zmp hrorl yulquxxrh xzmx, by euv plbhw cvdz yluc m nuxxir cmlwrp 'subtuh,' bx bt micutx drlxmbh xu pbtmqlrr gbxz euv, tuuhrl ul imxrl.
+	</p>
+</div>
+  </tr>
+</table>  
+</article>
+<!----------------------------------------------------------------------------->
+<footer>
+<small>
+&copy; 2016, by Uri Blumenthal, Jeff Diewald, and Sophia Yakoubov, and 2024, by David Wilson and Nick Cunningham
+</small>
+</footer>
+</body>
+</html>
