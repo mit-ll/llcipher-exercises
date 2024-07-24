@@ -56,37 +56,60 @@
 <table class="exerciseLayoutTable" cellspacing="0">
   <tr>
 
-<h1>Credits</h1>
-<p>Here are the people who helped put this together:</p>
-<table class="creditsTable" cellspacing="0">
+<h1>Welcome</h1>
+
+<p>This webapp offers a number of challenges in attacking the RSA and El Gamal cryptosystems.
+Each attack is meant to illustrate a way to <i>misuse</i> RSA or El Gamal; when they are used correctly, they are not vulnerable to any of these attacks.</p>
+
+<table class="homeTable" cellspacing="0">
 	<tr class="headerRow">
-		<td class="who">Who</td>
-		<td class="whatTheyDid">What They Did</td>
+		<!-- 
+		<td class="exerciseId">Challenge</td>
+		--> 
+		<td class="exerciseName" colspan="2">Challenge Name</td>
+		<td class="exerciseDescription">Challenge Description</td>
 	</tr>
 	<tr class="oddRow">
-		<td class="who">Sophia Yakoubov</td>
-		<td class="whatTheyDid">Exercise design, Python tool</td>
+		<!-- 
+		<td class="exerciseId">1</td>
+		--> 
+		<td class="exerciseName"><b>RSA Challenge One</b></td> 
+		<td class="exerciseName">Small Message Space Attack</td>
+		<td class="exerciseDescription">Given an RSA ciphertext encrypting one of several messages, recover the message.</td>
 	</tr>
 	<tr class="evenRow">
-		<td class="who">Uri Blumenthal</td>
-		<td class="whatTheyDid">Exercise design, implementation</td>
+		<!-- 
+		<td class="exerciseId">2</td>
+		--> 
+		<td class="exerciseName"><b>RSA Challenge Two</b></td> 
+		<td class="exerciseName">Small Plaintext and Encryption Exponent Attack</td>
+		<td class="exerciseDescription">Given an RSA ciphertext encrypting a small message with a small public key (e.g. e = 5), recover the message.</td>
 	</tr>
 	<tr class="oddRow">
-		<td class="who">Jeff Diewald</td>
-		<td class="whatTheyDid">Original website framework, implementation</td>
+		<!-- 
+		<td class="exerciseId">3</td>
+		--> 
+		<td class="exerciseName"><b>RSA Challenge Three</b></td>
+		<td class="exerciseName">Broadcast Attack</td>
+		<td class="exerciseDescription">Given RSA ciphertexts with different moduli but the same low encryption exponent, recover the message.</td>
 	</tr>
 	<tr class="evenRow">
-		<td class="who">Jason Williams</td>
-		<td class="whatTheyDid">LLCipher logos and icons</td>
+		<!-- 
+		<td class="exerciseId">4</td>
+		--> 
+		<td class="exerciseName"><b>RSA Challenge Four</b></td> 
+		<td class="exerciseName">Modulus Reuse Attack</td>
+		<td class="exerciseDescription">Given an encryption key, a decryption key and a modulus, recover the decryption key corresponding to a different encryption key but the same modulus.</td>
 	</tr>
-	<tr class="oddRow">
-		<td class="who">David Wilson</td>
-		<td class="whatTheyDid">Exercise Javascript conversion</td>
+		<tr class="oddRow">
+		<!-- 
+		<td class="exerciseId">5</td>
+		--> 
+		<td class="exerciseName"><b>El Gamal Challenge</b></td> 
+		<td class="exerciseName">Randomness Reuse Attack</td>
+		<td class="exerciseDescription">Given an encryption key, two ciphertexts which use the same random exponent y and the plaintext corresponding to one of those ciphertexts, recover the second plaintext.</td>
 	</tr>
-	<tr class="evenRow">
-		<td class="who">Nick Cunningham</td>
-		<td class="whatTheyDid">Exercise Javascript conversion, static page hosting</td>
-	</tr>
+</table>
 </table>
 
   </tr>
