@@ -221,7 +221,8 @@ table.exerciseLayoutTable {
 }
 
 table.exerciseValuesTable {
- font-size: 75%
+ font-size: 75%;
+ overflow-wrap: anywhere;
 }
 
 table.chineseRemainderTable td,
