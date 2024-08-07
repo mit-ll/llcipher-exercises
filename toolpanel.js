@@ -1,7 +1,7 @@
 function egcdButtonClick() {
     let a = document.getElementById('egcd_a').value;
     let b = document.getElementById('egcd_b').value;
-    let res = extendedGCD(BigInt(a), BigInt(b));
+    let res = extendedGCDHelper(BigInt(a), BigInt(b));
     document.getElementById('gcd_result').value = res[0];
     document.getElementById('gcd_inverse_a_result').value = res[1];
     document.getElementById('gcd_inverse_b_result').value = res[2];
