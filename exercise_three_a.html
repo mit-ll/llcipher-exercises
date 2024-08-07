@@ -57,31 +57,25 @@
 <table class="exerciseLayoutTable" cellspacing="0">
   <tr>
     <td class="exerciseDetails">
-      <h1>RSA Challenge Three: RSA Broadcast Attack</h1>
+      <h1>RSA Challenge Three (a): RSA Modulus Reuse</h1>
 <div class="exerciseDescription">
-  <p><b>The Problem:</b> Given RSA ciphertexts with different moduli but the
-  same low encryption exponent, recover the message.</p>
+  <p><b>The Problem:</b> Given two RSA ciphertexts of the same message encrypted with the same modulus but different public keys, recover the plaintext.</p>
 </div>
 <div class="problemStatement">
   <p>
-  Since you thwarted Malland's plots with Horridland, Malland enlisted the help of two more allies - Awfulland and Badland.
-  Horridland, Awfulland and and Badland made the mistake of all having the same low encryption exponent, e = 3.
-  Malland sent Horridland, Awfulland and Badland the same message about a plan of attack.
-  You get your hands on all three copies of the message:
+    Awfulland and Badland keep making strange choices with their keys - both of them are using the same modulus, even though their public keys are different.
+    Horridland has formed a new attack plan, and is sending an encrypted copy of the plan to Awfulland and Badland.
+    You've gotten a copy of both encrypted messages:
   </p>
   <ul>
     <li>Awfulland's message, encrypted as c<sub>A</sub> =
-    m<sup>3</sup> mod n<sub>A</sub> (using Awfulland's modulus
-    n<sub>A</sub>),</li>
-    <li>Badland's message, encrypted as c<sub>B</sub> = m<sup>3</sup>
-    mod n<sub>B</sub> (using Badland's modulus n<sub>B</sub>),
-    and</li>
-    <li>Horridland's message, encrypted as c<sub>H</sub> =
-    m<sup>3</sup> mod n<sub>H</sub> (using Horridland's modulus
-    n<sub>H</sub>).</li>
+    m<sup>e<sub>A</sub></sup> mod N (using Awfulland's public exponent
+    e<sub>A</sub>), and</li>
+    <li>Badland's message, encrypted as c<sub>B</sub> = m<sup>e<sub>B</sub></sup>
+    mod N (using Badland's public exponent e<sub>B</sub>).</li>
   </ul> 
-  <p>Use the fact that all three emails are encrypted using the
-  same low encryption exponent to figure out what the evil plot is.</p> 
+  <p>Use the fact that both copies of the message are encrypted using the
+  same modulus to figure out what the evil plot is.</p> 
 
   <p>For this exercise, use the following values:</p>
 <table class="exerciseValuesTable" cellspacing="0">
@@ -90,36 +84,24 @@
     <td class="value">Value</td>
   </tr>
     <tr class="oddRow">
-      <td class="name">Number of ciphertexts:</td>
-      <td class="value"><div id="ciphertext_number">3</div></td>
+      <td class="name">Common modulus:</td>
+      <td class="value"><div id="modulus">153380639740849</div></td>
     </tr>
     <tr class="evenRow">
-      <td class="name">Common public exponent:</td>
-      <td class="value"><div id="exponent">3</div></td>
-    </tr>
-    <tr class="oddRow">
       <td class="name">Ciphertext #1</td>
-      <td class="value"><div id="ciphertext_1"></div></td>
-    </tr>
-    <tr class="evenRow">
-      <td class="name">Modulus #1</td>
-      <td class="value"><div id="modulus_1"></div></td>
+      <td class="value"><div id="ciphertext_1">106230071531067</div></td>
     </tr>
     <tr class="oddRow">
+      <td class="name">Exponent #1</td>
+      <td class="value"><div id="exponent_1">1745</div></td>
+    </tr>
+    <tr class="evenRow">
       <td class="name">Ciphertext #2</td>
-      <td class="value"><div id="ciphertext_2"></div></td>
-    </tr>
-    <tr class="evenRow">
-      <td class="name">Modulus #2</td>
-      <td class="value"><div id="modulus_2"></div></td>
+      <td class="value"><div id="ciphertext_2">51206346831694</div></td>
     </tr>
     <tr class="oddRow">
-      <td class="name">Ciphertext #3</td>
-      <td class="value"><div id="ciphertext_3"></div></td>
-    </tr>
-    <tr class="evenRow">
-      <td class="name">Modulus #3</td>
-      <td class="value"><div id="modulus_3"></div></td>
+      <td class="name">Exponent #2</td>
+      <td class="value"><div id="exponent_2">57</div></td>
     </tr>
 </table>
 
@@ -154,21 +136,8 @@
 <!-- Create and check problems -->
 <script>
 function loadProblem() {
-  let msg = getShortMessage();
-  let msgval = textToNumber(msg);
-
-  for (i = 1; i < 4; i++) {
-    let rsa = genRSAWithPubExp(rsa_bits, 3);
-    let modulus = rsa[0];
-    let exponent = rsa[1];
-    let ctext = modExp(msgval, exponent, modulus);
-    
-    document.getElementById('modulus_' + i).innerHTML = modulus;
-    document.getElementById('exponent').innerHTML = exponent;
-    document.getElementById('ciphertext_' + i).innerHTML = ctext;
-  }
-
-  let answerhash = sjcl.hash.sha256.hash(msg);
+  // if you're still checking, please don't cheat
+  let answerhash = sjcl.hash.sha256.hash("Candy");
   document.getElementById('ans_hash').value = answerhash;
   return false;
 }
@@ -178,7 +147,7 @@ function checkAnswer() {
   let anshash = sjcl.hash.sha256.hash(ans);
   let realanshash = document.getElementById('ans_hash').value;
   if (anshash == realanshash) {
-	  document.getElementById('anscheck_result').innerHTML = "Correct!";
+    document.getElementById('anscheck_result').innerHTML = "Correct!";
   }
   else {
     document.getElementById('anscheck_result').innerHTML = "Incorrect";
